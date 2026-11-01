@@ -1,0 +1,212 @@
+/* ============================================================
+   尾页 · 一封信
+   ============================================================ */
+
+@font-face{
+  font-family:'WenKai';
+  src:url('assets/fonts/wenkai.woff2') format('woff2');
+  font-weight:400; font-style:normal; font-display:swap;
+}
+
+.letter-sec{
+  position:relative; z-index:3;
+  padding:clamp(64px,9vw,116px) clamp(18px,4vw,54px) clamp(72px,10vw,132px);
+  background-color:var(--paper);
+  background-image:radial-gradient(rgba(58,22,34,.05) 1px, transparent 1px);
+  background-size:22px 22px;
+  border-top:1px solid rgba(58,22,34,.08);
+  text-align:center;
+}
+.letter-sec .env-kicker{
+  margin:0 0 18px;
+  font-family:var(--mono); font-size:10px; letter-spacing:.28em;
+  color:#9b7b84; text-transform:uppercase;
+}
+.letter-sec .env-title{
+  margin:0 0 clamp(34px,5vw,52px);
+  font-family:var(--hand); font-weight:400;
+  font-size:clamp(1.5rem,2.8vw,2.1rem); letter-spacing:.06em; color:var(--wine);
+}
+
+/* ---------------- 信封 ---------------- */
+.env-btn{
+  display:inline-flex; flex-direction:column; align-items:center; gap:20px;
+  padding:0; border:0; background:none; cursor:pointer;
+  font:inherit; color:inherit;
+  -webkit-tap-highlight-color:transparent;
+  perspective:900px;
+}
+.env-obj{
+  position:relative; display:block;
+  width:min(430px,74vw);
+  aspect-ratio:1.5 / 1;
+  transform:rotate(-2.2deg);
+  transition:transform .5s cubic-bezier(.2,.8,.2,1);
+  filter:drop-shadow(0 26px 34px rgba(58,22,34,.2));
+}
+.env-btn:hover .env-obj{ transform:translateY(-8px) rotate(-1deg); }
+.env-btn:active .env-obj{ transform:translateY(-2px) rotate(-2deg) scale(.99); }
+.env-btn:focus-visible{ outline:none; }
+.env-btn:focus-visible .env-obj{ outline:2px solid var(--rose); outline-offset:10px; border-radius:6px; }
+
+/* 信封里露出的信纸 */
+.env-note{
+  position:absolute; left:6%; right:6%; top:4%; height:76%;
+  background:linear-gradient(#fffdf6,#f7f1e2);
+  border:1px solid rgba(58,22,34,.08);
+  border-radius:3px;
+  transition:transform .7s cubic-bezier(.2,.8,.2,1) .18s;
+}
+.env-btn:hover .env-note{ transform:translateY(-10px); }
+
+/* 信封正面 */
+.env-front{
+  position:absolute; inset:0; z-index:2;
+  border-radius:5px;
+  background:linear-gradient(160deg,#fdf6e7 0%,#f6ead4 60%,#efdfc6 100%);
+  border:1px solid rgba(58,22,34,.12);
+  overflow:hidden;
+}
+.env-fold-l,.env-fold-r,.env-fold-b{ position:absolute; inset:0; }
+.env-fold-l{ background:linear-gradient(90deg,rgba(255,255,255,.55),rgba(255,255,255,0) 55%); clip-path:polygon(0 0,52% 50%,0 100%); }
+.env-fold-r{ background:linear-gradient(270deg,rgba(255,255,255,.5),rgba(255,255,255,0) 55%); clip-path:polygon(100% 0,48% 50%,100% 100%); }
+.env-fold-b{ background:linear-gradient(0deg,rgba(232,214,186,.55),rgba(232,214,186,0) 60%); clip-path:polygon(0 100%,50% 48%,100% 100%); }
+
+/* 收信人 */
+.env-addr{
+  position:absolute; left:7%; bottom:8%;
+  font-family:var(--hand); font-size:clamp(15px,1.9vw,20px);
+  letter-spacing:.08em; color:rgba(58,22,34,.45);
+}
+
+/* 上翻盖 */
+.env-flap{
+  position:absolute; left:0; right:0; top:0; height:58%; z-index:3;
+  transform-origin:50% 0;
+  transform:rotateX(0deg);
+  transition:transform .85s cubic-bezier(.55,.02,.28,1);
+  backface-visibility:hidden;
+  display:flex; align-items:flex-end; justify-content:center;
+}
+.env-flap::before{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg,#fff9ee,#f4e7d1);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  filter:drop-shadow(0 6px 8px rgba(58,22,34,.1));
+}
+.env-obj.open .env-flap{ transform:rotateX(-178deg); }
+
+/* 封口小印 */
+.env-seal{
+  position:relative; z-index:1;
+  width:clamp(38px,6vw,50px); height:clamp(38px,6vw,50px);
+  margin-bottom:clamp(-19px,-2.7vw,-13px);
+  display:flex; align-items:center; justify-content:center;
+  border-radius:50%;
+  background:radial-gradient(circle at 36% 28%, #cf939d 0%, #bd7d89 58%, #ab6c79 100%);
+  color:#fff8ec;
+  box-shadow:0 3px 9px rgba(90,42,58,.2), inset 0 1px 2px rgba(255,255,255,.4);
+  transition:transform .45s var(--ease);
+}
+.env-seal::after{
+  content:''; position:absolute; inset:4px;
+  border-radius:50%; border:1px solid rgba(255,247,234,.5);
+}
+.env-seal svg{ width:44%; height:44%; display:block; }
+.env-btn:hover .env-seal{ transform:scale(1.05); }
+
+.env-hint{
+  font-family:var(--mono); font-size:10px; letter-spacing:.26em;
+  color:#8a6b74; text-transform:uppercase;
+  display:inline-flex; align-items:center; gap:9px;
+}
+.env-hint::before,.env-hint::after{
+  content:''; width:26px; height:1px; background:rgba(58,22,34,.22);
+}
+
+/* ---------------- 信纸 ---------------- */
+.letter-modal{
+  position:fixed; inset:0; z-index:70;
+  display:flex; align-items:center; justify-content:center;
+  padding:clamp(16px,4vw,52px);
+  background:rgba(22,14,11,.82);
+  -webkit-backdrop-filter:blur(7px); backdrop-filter:blur(7px);
+  opacity:0; visibility:hidden;
+  transition:opacity .45s ease, visibility .45s ease;
+}
+.letter-modal.open{ opacity:1; visibility:visible; }
+
+.letter-sheet{
+  --grid:clamp(20px,2.7vw,29px);
+  position:relative;
+  width:min(620px,90vw);
+  max-height:calc(100vh - 32px);
+  overflow:auto;
+  padding:calc(var(--grid) * 2.2) calc(var(--grid) * 1.6) calc(var(--grid) * 1.9);
+  background-color:#fdf9ee;
+  background-image:
+    linear-gradient(to right, rgba(122,158,190,.26) 0 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(122,158,190,.26) 0 1px, transparent 1px);
+  background-size:var(--grid) var(--grid);
+  background-position:-1px -1px;
+  box-shadow:0 30px 70px rgba(30,16,8,.5), 0 2px 0 rgba(255,255,255,.6) inset;
+  transform:translateY(26px) scale(.95) rotate(-3deg);
+  transition:transform .65s cubic-bezier(.2,.8,.2,1);
+}
+.letter-modal.open .letter-sheet{ transform:translateY(0) scale(1) rotate(-1.4deg); }
+
+/* 打孔 */
+.letter-sheet::before{
+  content:''; position:absolute; top:calc(var(--grid) * .55); left:0; right:0; height:8px;
+  background-image:radial-gradient(circle at center, rgba(120,96,70,.3) 0 3px, transparent 3.4px);
+  background-size:var(--grid) 8px;
+  background-repeat:repeat-x;
+}
+
+/* 胶带 */
+.letter-tape{
+  position:absolute; top:calc(var(--grid) * -1.05); left:50%;
+  width:34%; height:calc(var(--grid) * 1.15);
+  transform:translateX(-50%) rotate(-3.5deg);
+  background:linear-gradient(180deg, rgba(226,144,150,.72), rgba(214,124,132,.62));
+  box-shadow:0 2px 8px rgba(90,40,40,.18);
+  clip-path:polygon(2% 0,98% 4%,100% 96%,0 100%);
+  opacity:.92;
+}
+
+.letter-lines p{
+  margin:0;
+  font-family:'WenKai','Kaiti SC','STKaiti','Songti SC','Noto Serif SC',serif;
+  font-weight:400;
+  font-size:calc(var(--grid) * .94);
+  line-height:var(--grid);
+  color:#463b3d;
+  letter-spacing:.045em;
+}
+.letter-lines p + p{ text-indent:1.8em; }
+
+.letter-close{
+  position:absolute; top:clamp(14px,3vw,30px); right:clamp(14px,3vw,30px);
+  width:40px; height:40px; border-radius:50%;
+  border:1px solid rgba(255,246,228,.28);
+  background:rgba(255,246,228,.08);
+  color:#fff6e4; font-size:15px; line-height:1;
+  cursor:pointer;
+  transition:background .25s ease, transform .25s ease;
+}
+.letter-close:hover{ background:rgba(255,246,228,.18); transform:rotate(90deg); }
+
+@media (max-width:700px){
+  .env-obj{ width:min(340px,78vw); }
+  .letter-sheet{
+    --grid:19px;
+    width:90vw;
+    padding:calc(var(--grid) * 2.1) calc(var(--grid) * .9) calc(var(--grid) * 1.7);
+  }
+  .letter-lines p{ font-size:calc(var(--grid) * .93); letter-spacing:.02em; }
+  .letter-lines p + p{ text-indent:1.4em; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .env-flap,.letter-sheet,.letter-modal,.env-note,.env-obj{ transition-duration:.001ms; }
+}

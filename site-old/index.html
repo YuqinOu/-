@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>有个朋友叫扬子 · 舒名扬的相册</title>
+<meta name="description" content="写给舒名扬（扬子、梅子干）的一本相册。初中认识，如今都在上大学。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Caveat:wght@400;600&family=Kalam:wght@400;700&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23faf9f6'/%3E%3Cpath d='M50 14 C52 34 54 46 54 50 C70 46 86 44 92 46 C74 55 58 62 54 64 C58 78 60 88 58 92 C50 78 44 66 42 64 C28 72 16 76 10 74 C24 62 34 54 38 50 C34 36 32 24 34 16 C40 30 46 42 50 46 C50 34 50 18 50 14Z' fill='none' stroke='%23f6d97a' stroke-width='7' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<!-- 纸张噪点 -->
+<svg class="grain" aria-hidden="true">
+  <filter id="noiseFilter">
+    <feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="4" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#noiseFilter)"></rect>
+</svg>
+
+<!-- 左装订线 -->
+<div class="spine" aria-hidden="true">
+  <div class="spine-line"></div>
+  <div class="holes">
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <a class="nav-brand" href="#top">
+    <span class="nav-dot"></span>
+    <span>扬子 · 相册</span>
+  </a>
+  <nav class="nav-links">
+    <a href="#album">相册</a>
+    <a href="#about">关于她</a>
+    <a href="#journey">这些年</a>
+    <a href="#letter">末页</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <svg class="doodle d-squiggle" viewBox="0 0 200 60" aria-hidden="true">
+      <path d="M6 34 C22 10 34 46 50 26 C64 8 76 44 92 28 C106 14 118 44 134 30 C148 18 160 40 176 28 C186 21 192 30 194 34"/>
+    </svg>
+
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="kicker">
+          <svg class="kicker-star" viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M50 8 C52 30 54 46 54 50 C70 46 86 44 92 46 C74 55 58 62 54 64 C58 78 60 88 58 94 C50 78 44 66 42 64 C28 72 16 76 10 74 C24 62 34 54 38 50 C34 36 32 24 34 16 C40 30 46 42 50 46 C50 34 50 18 50 8Z"/>
+          </svg>
+          一本只关于两个人的相册 <span class="sep">/</span> 2006 — 现在
+        </p>
+        <h1 class="hero-title">
+          好朋友，是把你的一半青春<br>
+          <span class="hl">也一起记得</span>的人。
+        </h1>
+        <p class="hero-lead">
+          这本相册写给舒名扬。我叫她扬子，也叫她梅子干。<br>
+          我们初中认识，那时谁也没想到，后来会一起走过这么久。
+        </p>
+        <div class="hero-tags">
+          <span class="tag tag-pink">扬子</span>
+          <span class="tag tag-yellow">梅子干</span>
+          <span class="tag tag-green">2006.05.24</span>
+        </div>
+        <a class="scroll-hint" href="#album">
+          <svg viewBox="0 0 60 90" aria-hidden="true">
+            <path d="M30 6 C28 26 32 48 30 70"/>
+            <path d="M16 56 C22 64 27 70 30 76 C33 70 38 64 44 56"/>
+          </svg>
+          <span>往下翻</span>
+        </a>
+      </div>
+
+      <div class="hero-photos">
+        <figure class="pol pol-back">
+          <span class="tape tape-1"></span>
+          <img src="assets/img/p26.jpg" alt="我们穿着白裙和头纱的合照" loading="lazy">
+          <figcaption>生日那天</figcaption>
+        </figure>
+        <figure class="pol pol-mid">
+          <span class="tape tape-2"></span>
+          <img src="assets/img/p22.jpg" alt="我们在室内比耶的合照" loading="lazy">
+          <figcaption>都穿了白</figcaption>
+        </figure>
+        <figure class="pol pol-main">
+          <span class="tape tape-3"></span>
+          <img src="assets/img/p01.jpg" alt="冬天我们贴着脸的自拍" loading="eager">
+          <figcaption>又一个冬天</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="hero-foot">
+      <span class="mono">NO.01 — 04</span>
+      <p>34 张照片，四段日子，一个一直没走的人。</p>
+    </div>
+  </section>
+
+  <!-- ============ ALBUM ============ -->
+  <section class="album" id="album">
+    <div class="sec-head">
+      <p class="kicker">相册 · 共 34 张</p>
+      <h2 class="sec-title">我们的照片</h2>
+      <p class="sec-sub">下面每一张，我都能说出当时发生了什么。点开可以看大图。</p>
+    </div>
+
+    <div id="gallery"></div>
+    <noscript><p style="color:#918c80;font-size:14px">相册需要开启 JavaScript 才能显示，请允许脚本后刷新页面。</p></noscript>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" id="about">
+    <div class="sec-head">
+      <p class="kicker">她是谁</p>
+      <h2 class="sec-title">关于舒名扬</h2>
+      <p class="sec-sub">如果只允许我用几个词介绍她，我会写这些。</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="card-index">
+        <div class="card-index-top">
+          <span class="mono">PROFILE</span>
+          <span class="mono">/ 01</span>
+        </div>
+        <dl class="facts">
+          <div><dt>姓名</dt><dd>舒名扬</dd></div>
+          <div><dt>外号</dt><dd>扬子 · 梅子干</dd></div>
+          <div><dt>生日</dt><dd>2006 年 5 月 24 日</dd></div>
+          <div><dt>星座</dt><dd>双子座</dd></div>
+          <div><dt>相识</dt><dd>初中</dd></div>
+          <div><dt>现在</dt><dd>都在上大学</dd></div>
+        </dl>
+        <p class="card-note">— 一个笑起来眼睛会先弯的人</p>
+      </div>
+
+      <div class="about-text">
+        <p class="big-line">我们认识的时候，都还是会在走廊上小跑的人。</p>
+        <p>初中那几年，日子长得像永远过不完。上课、补习、晚自习、回家路上分一副耳机——那时候觉得这些都是理所当然的，谁也没想过要拍照留念。</p>
+        <p>后来才知道，能有一个从少年时代一直到大学都还在的人，是很运气的事。我们不用常常联系，但只要坐下来，就能从上次没讲完的地方接着讲。</p>
+        <p class="about-sign">所以有了这本相册。<br>照片是我一张张拍的、一张张留的，故事是我写的，都是真的。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ JOURNEY ============ -->
+  <section class="journey" id="journey">
+    <div class="sec-head">
+      <p class="kicker">这些年</p>
+      <h2 class="sec-title">从校服到大学</h2>
+    </div>
+
+    <ol class="timeline">
+      <li class="tl-item reveal">
+        <div class="tl-year"><span class="mono">2006</span><em>5 月 24 日</em></div>
+        <div class="tl-body">
+          <h3>故事从这里开始</h3>
+          <p>她出生了。那时候我还不认识她，这件事跟我一点关系都没有——但后来，它变成我人生里相当重要的一个前提。</p>
+        </div>
+      </li>
+      <li class="tl-item reveal">
+        <div class="tl-year"><span class="mono">初中</span><em>我们认识</em></div>
+        <div class="tl-body">
+          <h3>第一次说话，谁都记不清了</h3>
+          <p>大概是借了块橡皮，或者问了一句作业写到第几题。总之从那以后，走廊上就总有一个人在等我，放学路上总有两个人的影子。</p>
+        </div>
+      </li>
+      <li class="tl-item reveal">
+        <div class="tl-year"><span class="mono">高中</span><em>各自忙</em></div>
+        <div class="tl-body">
+          <h3>见面变少了，但没断过</h3>
+          <p>那几年我们都忙，聊天记录断断续续。可每次见面，坐下三分钟就又变回原来那样，好像中间那几个月根本不存在。</p>
+        </div>
+      </li>
+      <li class="tl-item reveal">
+        <div class="tl-year"><span class="mono">现在</span><em>上大学</em></div>
+        <div class="tl-body">
+          <h3>两所学校，一本相册</h3>
+          <p>我们在不同的地方上学，照片靠微信传，故事靠见面讲。这本相册，是把那些散在手机相册里的日子，收进同一个地方。</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ LETTER ============ -->
+  <section class="letter" id="letter">
+    <svg class="doodle d-heart" viewBox="0 0 100 100" aria-hidden="true">
+      <path d="M50 86 C30 70 10 54 12 34 C14 18 32 12 44 22 C48 26 50 30 50 34 C50 30 54 22 60 20 C74 14 88 24 86 40 C84 58 66 74 50 86Z"/>
+    </svg>
+    <div class="letter-card reveal">
+      <p class="kicker">末页</p>
+      <h2>写给扬子</h2>
+      <p class="letter-body">
+        我不知道二十年后我们会在哪里，会不会还是这样，一年见几次，见面就笑到不顾形象。<br><br>
+        但我知道，只要翻到这本相册，那些下午、那些路灯、那些没喝完的饮料，就都还在。<br><br>
+        谢谢你从初中一直留到现在。<br>
+        生日快乐，梅子干。
+      </p>
+      <p class="letter-sign">—— 你的朋友</p>
+      <div class="letter-stamp">
+        <span class="mono">2006 · 05 · 24</span>
+        <span class="mono">永远的好朋友</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <span class="mono">SHU MINGYANG · A FRIENDSHIP ALBUM</span>
+    <p>这本相册为舒名扬而做，照片与故事都属于我们。</p>
+    <a href="#top" class="to-top">回到最上面 ↑</a>
+  </div>
+</footer>
+
+<!-- 大图 -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="查看照片">
+  <button class="lb-close" id="lbClose" aria-label="关闭">✕</button>
+  <button class="lb-prev" id="lbPrev" aria-label="上一张">‹</button>
+  <button class="lb-next" id="lbNext" aria-label="下一张">›</button>
+  <figure class="lb-figure">
+    <img id="lbImg" src="" alt="">
+    <figcaption>
+      <h4 id="lbTitle"></h4>
+      <p id="lbText"></p>
+      <span class="mono" id="lbCount"></span>
+    </figcaption>
+  </figure>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

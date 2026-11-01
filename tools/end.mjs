@@ -1,0 +1,13 @@
+import { chromium } from 'playwright-core';
+const b = await chromium.launch({ executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe', args:['--enable-unsafe-swiftshader','--use-gl=angle','--use-angle=swiftshader','--hide-scrollbars'] });
+const p = await b.newPage({ viewport:{width:1440,height:900} });
+const errs=[]; p.on('pageerror',e=>errs.push(e.message));
+await p.goto('http://127.0.0.1:8771/', {waitUntil:'networkidle'});
+await p.waitForTimeout(2500);
+const h = await p.evaluate(()=>document.body.scrollHeight);
+console.log('height', h);
+await p.evaluate(()=>window.scrollTo(0, document.body.scrollHeight));
+await p.waitForTimeout(900);
+await p.screenshot({ path:'E:/扬子/shots5/end.png' });
+console.log('errs', JSON.stringify(errs));
+await b.close();

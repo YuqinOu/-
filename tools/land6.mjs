@@ -1,0 +1,11 @@
+import { chromium } from 'playwright-core';
+const b = await chromium.launch({ executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe', args:['--enable-unsafe-swiftshader','--use-gl=angle','--use-angle=swiftshader','--hide-scrollbars'] });
+const ctx = await b.newContext({ viewport:{width:844,height:390}, deviceScaleFactor:2 });
+const p = await ctx.newPage();
+await p.goto('http://127.0.0.1:8771/', {waitUntil:'networkidle'});
+await p.evaluate(()=>document.getElementById('letter').scrollIntoView({behavior:'instant'}));
+await p.waitForTimeout(600);
+await p.click('#envOpen'); await p.waitForTimeout(1200);
+await p.screenshot({ path:'E:/扬子/shots6/land-open.png' });
+console.log(await p.evaluate(()=>{const s=document.querySelector('.letter-sheet');return JSON.stringify({sh:s.scrollHeight, ch:s.clientHeight});}));
+await ctx.close(); await b.close();

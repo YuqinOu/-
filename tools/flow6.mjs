@@ -1,0 +1,21 @@
+import { chromium } from 'playwright-core';
+const b = await chromium.launch({ executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe', args:['--enable-unsafe-swiftshader','--use-gl=angle','--use-angle=swiftshader','--hide-scrollbars'] });
+const out = [];
+// 手机关闭状态
+const ctx = await b.newContext({ viewport:{width:390,height:844}, deviceScaleFactor:2, isMobile:true, hasTouch:true });
+const p = await ctx.newPage();
+p.on('pageerror', e=>out.push('ERR '+e.message));
+await p.goto('http://127.0.0.1:8771/', {waitUntil:'networkidle'});
+await p.evaluate(()=>document.getElementById('letter').scrollIntoView({behavior:'instant'}));
+await p.waitForTimeout(700);
+await p.screenshot({ path:'E:/扬子/shots6/M-env.png' });
+await p.click('#envOpen'); await p.waitForTimeout(1200);
+await p.click('#letterClose'); await p.waitForTimeout(700);
+const st = await p.evaluate(()=>({ locked:document.body.classList.contains('locked'), open:document.getElementById('letterModal').classList.contains('open') }));
+out.push('after close '+JSON.stringify(st));
+await p.evaluate(()=>document.getElementById('letter').scrollIntoView({behavior:'instant'}));
+await p.waitForTimeout(400);
+await p.screenshot({ path:'E:/扬子/shots6/M-closed.png' });
+await ctx.close();
+console.log(out.join('\n'));
+await b.close();

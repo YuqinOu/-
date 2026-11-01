@@ -1,0 +1,15 @@
+import { chromium } from 'playwright-core';
+const b = await chromium.launch({ executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe', args:['--enable-unsafe-swiftshader','--hide-scrollbars'] });
+const p = await b.newPage({ viewport:{width:1440,height:900} });
+await p.goto('http://127.0.0.1:8771/', {waitUntil:'networkidle'});
+await p.waitForTimeout(2000);
+await p.evaluate(()=>document.getElementById('letter').scrollIntoView({behavior:'instant'}));
+await p.click('#envOpen');
+await p.waitForTimeout(1600);
+console.log('open:', await p.evaluate(()=>document.getElementById('letterModal').classList.contains('open')));
+await p.screenshot({ path:'E:/扬子/shots5/flow-open.png' });
+await p.keyboard.press('Escape');
+await p.waitForTimeout(1400);
+console.log('after esc:', await p.evaluate(()=>document.getElementById('letterModal').classList.contains('open')), 'locked:', await p.evaluate(()=>document.body.classList.contains('locked')));
+await p.screenshot({ path:'E:/扬子/shots5/flow-closed.png' });
+await b.close();

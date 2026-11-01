@@ -1,0 +1,14 @@
+import { chromium } from 'playwright-core';
+const b = await chromium.launch({ executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe', args:['--enable-unsafe-swiftshader','--use-gl=angle','--use-angle=swiftshader','--hide-scrollbars'] });
+const ctx = await b.newContext({ viewport:{width:390,height:844}, deviceScaleFactor:2, isMobile:true, hasTouch:true });
+const p = await ctx.newPage();
+const errs = [];
+p.on('pageerror', e => errs.push('PAGEERROR ' + e.message));
+p.on('console', m => { if (m.type()==='error') errs.push(m.text().slice(0,150)); });
+await p.goto('http://127.0.0.1:8771/', {waitUntil:'networkidle'});
+await p.waitForTimeout(2500);
+await p.evaluate(()=>document.getElementById('album').scrollIntoView());
+await p.waitForTimeout(1500);
+await p.screenshot({ path:'E:/扬子/shots5/mob-album.png' });
+console.log('errors', JSON.stringify(errs.slice(0,5)));
+await b.close();
